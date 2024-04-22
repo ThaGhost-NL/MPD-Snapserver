@@ -1,0 +1,25 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Snapcast Server
+# Runs snapserver
+# ==============================================================================
+declare -a options
+
+# Enable Jemalloc for better memory handling
+export LD_PRELOAD="/usr/local/lib/libjemalloc.so.2"
+
+# Load default or custom config
+if bashio::config.has_value 'snapcast_custom_config'; then
+	config=$(bashio::config 'snapcast_custom_config')
+	options+=(-c "${config}")
+	bashio::log.info 'Starting the Snapserver with custom configuration...'
+else
+	config="/etc/snapserver.conf"
+	options+=(-c "${config}")
+	bashio::log.info 'Starting the Snapserver with default configuration...'
+fi
+
+bashio::log.info "Loading Snapcast Server daemon with command line parameters: ${options[@]}"
+
+# Run Snapcast Server
+snapserver "${options[@]}"

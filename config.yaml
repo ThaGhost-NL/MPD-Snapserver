@@ -1,0 +1,38 @@
+name: Snapcast MPD Daemon & Snapcast Spotify Connect
+version: 1.0
+slug: snapcast-mpd-server
+panel_icon: mdi:music-circle
+description: Snapcast and MPD Server intergration
+arch:
+  - armv7
+  - armhf
+  - aarch64
+  - amd64
+  - i386
+init: false
+audio: true
+devices:
+  - /dev/snd
+map:
+  - share:rw
+  - media:rw
+options:
+  snapcast_custom_config: /share/snapcast/.config/snapserver.conf
+  mpd_custom_config: /share/mpd/.config/mpd.conf
+  client_device_id: huiskamer_speakers
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
+  snapcast_custom_config: match(/share/.+|/media/.+|(smb|nfs)://.+)
+  mpd_custom_config: match(/share/.+|/media/.+|(smb|nfs)://.+)
+  client_device_id: str?
+ports:
+  1780/tcp: 1780
+  1705/tcp: 1705
+  1704/tcp: 1704
+  4953/tcp: null
+  6600/tcp: 6600
+ports_description:
+  1780/tcp: Snapcast jsonRPC
+  1705/tcp: Stream control
+  1704/tcp: Snapcast websocket
+  6600/tcp: MDP Connection

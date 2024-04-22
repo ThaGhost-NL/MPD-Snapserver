@@ -1,0 +1,34 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Snapcast Client
+# Runs snapclient
+# ==============================================================================
+declare -a options
+
+# Enable Jemalloc for better memory handling
+export LD_PRELOAD="/usr/local/lib/libjemalloc.so.2"
+
+bashio::log.info 'Waiting for Snapcast Server websocket to become available...'
+bashio::net.wait_for 1704
+bashio::log.info 'Websocket available. Starting the Snapcast Client daemon...'
+
+# Hostname
+options+=(-h local-snapcast-mpd-server)
+
+# Device ID
+device_id=$(bashio::config 'client_device_id')
+options+=(--hostID "${device_id}")
+
+# Are we running in debug mode?
+if bashio::debug; then
+  options+=(--logsink file:/dev/stdout)
+  options+=(--logfilter *:debug)
+else
+  options+=(--logsink file:/dev/stdout)
+  options+=(--logfilter *:info)
+fi
+
+bashio::log.info "Loading Snapcast Client daemon with command line parameters: ${options[@]}"
+
+# Run Snapcast Client
+snapclient "${options[@]}"

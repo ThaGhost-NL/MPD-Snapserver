@@ -1,0 +1,26 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: Media Player Daemon
+# Runs MPD
+# ==============================================================================
+
+# Enable Jemalloc for better memory handling
+export LD_PRELOAD="/usr/local/lib/libjemalloc.so.2"
+
+bashio::log.info 'Waiting for Snapcast Server websocket to become available...'
+bashio::net.wait_for 1704
+bashio::log.info 'Websocket available. Starting Media Player Daemon...'
+
+# Load default or custom config
+if bashio::config.has_value 'mpd_custom_config'; then
+	config=$(bashio::config 'mpd_custom_config')
+	bashio::log.info 'Starting Media Player Daemon with custom configuration...'
+else
+	config="/etc/mpd.conf"
+	bashio::log.info 'Starting Media Player Daemon with default configuration...'
+fi
+
+bashio::log.info "Starting Media Player Daemon with command line parameters: ${config}"
+
+# Run Media Player Daemon
+mpd --stdout --no-daemon "${config}"
