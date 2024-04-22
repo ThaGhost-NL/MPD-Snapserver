@@ -18,9 +18,6 @@
 ![Supports armhf Architecture][armhf-badge]
 ![Supports armv7 Architecture][armv7-badge]
 ![Supports i386 Architecture][i386-badge]
-
-[![Add repository on my Home Assistant][repository-badge]][repository-url]
-[![Install on my Home Assistant][install-badge]][install-url]
 [![Donate][donation-badge]][donation-url]
 
 ## Audio player and Multi Room Audio for Home Assistant
