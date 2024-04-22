@@ -33,6 +33,9 @@ Snapcast-MPD is built with the following programs:
 - [ympd](https://ympd.org/)
 - [Snapcast Client](https://github.com/badaix/snapcast)
 - [Snapcast Server](https://github.com/badaix/snapcast)
+- [librespot](https://github.com/librespot-org/librespot) **
+
+** _librespot only works with Spotify Premium._
 
 # Configuration
 
