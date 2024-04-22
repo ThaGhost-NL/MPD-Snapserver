@@ -26,8 +26,12 @@
 ## Audio player and Multi Room Audio for Home Assistant
 
 This addon for hass.io adds audio playing capability to the host and acts as a Multi Room Audio server/client.
+
 Snapcast Client uses the build-in audio host (Alsa/Pulse) and allows you to play audio on speakers connected via the 3.5mm jack or HDMI.
-Snapcast-MPD is built with the following programs:
+
+Librespot creates a dedicated Spotify Audio Stream via the Snapcast-Server. More details about Librespot and configuration options can be found in [DOCS.md](https://github.com/ThaGhostNL/Snapcast-MPD/DOCS.md)
+
+#### Snapcast-MPD uses the following programs:
 
 - [MPD](https://www.musicpd.org/)
 - [ympd](https://ympd.org/)
@@ -41,7 +45,14 @@ Snapcast-MPD is built with the following programs:
 
 The configuration is still under heavy changes, and will be available soon!
 
-The local media can be stored on /share (which allow an access through the samba addon). By default the directory for media is /share/mpd/media. Since /share is read-only, the directory must be created from another addon or directly on the host.
+MPD uses by default the following directories to store databases and configurations
+- /share/mpd/.data/mpd.db
+- /share/mpd/.data/state **
+- /share/mpd/.config/mpd.conf
+
+Local media can also be stored on /share (which allow an access through the samba addon). The default directories for media and playlists are:
+- /share/mpd/music
+- /share/mpd/playlists
 
 ### Ports in use:
 - 1704: Snapcast websocket for Client communication
