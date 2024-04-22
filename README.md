@@ -55,9 +55,9 @@ Local media can also be stored on /share (which allow an access through the samb
 - /share/mpd/playlists
 
 ### Ports in use:
-- 1704: Snapcast websocket for Client communication
-- 1705: Stream media player control, for example: volume and mute
+- 1704: Snapcast websocket used by Snapcast Clients
+- 1705: Stream media player control, for example to set the volume of a Group, Client(s) or Client(s) inside a Group
 - 1780: Snapcast jsonRPC API
-- 4953: UDP Broadcast, used by clients who broadcast their audio
+- 4953: UDP Broadcast, used by Snapcast Clients who broadcast their audio them self
 - 6600: MPD Communication, used by MPD clients
-- 6680: YMPD Web browser `(Hass.io Ingress)`
+- 6680: YMPD Web browser to manage playlists and MPD media player `(Hass.io Ingress)`
