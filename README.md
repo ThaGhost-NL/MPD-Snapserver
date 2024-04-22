@@ -26,7 +26,7 @@ This addon for hass.io adds audio playing capability to the host and acts as a M
 
 Snapcast Client uses the build-in audio host (Alsa/Pulse) and allows you to play audio on speakers connected via the 3.5mm jack or HDMI.
 
-Librespot creates a dedicated Spotify Audio Stream via the Snapcast-Server. More details about Librespot and configuration options can be found in [DOCS.md](https://github.com/ThaGhostNL/Snapcast-MPD/DOCS.md)
+Librespot creates a dedicated Spotify Audio Stream via the Snapcast-Server. More details about Librespot and configuration options can be found in [DOCS.md](https://github.com/ThaGhost-NL/Snapcast-MPD/blob/main/DOCS.md)
 
 #### Snapcast-MPD uses the following programs:
 
